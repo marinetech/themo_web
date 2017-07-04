@@ -1,0 +1,34 @@
+{
+  "name": "themo_web",
+  "version": "1.0.0",
+  "description": "Themo Web Site",
+  "main": "app/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "stylus app/source/stylesheets/index.styl -o app/static/css",
+    "watch-css": "stylus app/source/stylesheets/index.styl -o app/static/css -w",
+    "clean": "rm -rf app/static/css && mkdir -p app/static/css",
+    "build": "npm run clean && npm run build-css",
+    "watch": "npm run clean && npm run watch-css & nodemon app/server -e js,jade",
+    "start": "node app/server"
+  },
+  "keywords": [
+    "themo",
+    "web",
+    "anl"
+  ],
+  "author": "imardix@univ.haifa.ac.il",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.4.1",
+    "bower": "^1.8.0",
+    "express": "^4.15.3",
+    "jade": "^1.11.0",
+    "mongoose": "^4.10.8",
+    "morgan": "^1.8.2",
+    "nodemon": "^1.9.1",
+    "pug": "^2.0.0-rc.2",
+    "stylus": "^0.53.0",
+    "synchronize": "^2.0.0"
+  }
+}

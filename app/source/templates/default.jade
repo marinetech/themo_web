@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    link(rel='stylesheet', href='/css/index.css')
+    title Welcome to the THEMO Web-Site
+  body
+    .header
+      h2.page-title Welcome to THEMO Website
+
+    ul.nav
+      li: a(href='/') Home
+      li: a(href='/buoys') Buoys
+      li: a(href='/graph') Graph
+      li: a(href='/login') login
+
+
+
+    .main-content
+      block content
+
+    .footer
+      p Copyright © 2017 themo@univ.haifa.ac.il

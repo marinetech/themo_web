@@ -1,0 +1,78 @@
+doctype html
+html
+  head
+    title Welcome to THEMO Web-Site
+
+    //<meta charset="utf-8"/>
+    //<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    //link(rel='stylesheet', href='/bootstrap/dist//css/bootstrap.css')
+    //link(rel='stylesheet', href='/css/bootstrap-theme.css')
+    //link(rel='stylesheet', href='/css/dc.css')
+    //link(rel='stylesheet', href='/css/ol.css')
+    //link(rel='stylesheet', href='/css/style.css')
+    //link(rel='stylesheet', href='/css/bootstrap-multiselect.css')
+    //link(rel='stylesheet', href='/css/bootstrap-datetimepicker.min.css')
+    //link(rel='stylesheet', href='/css/font-awesome.min.css')
+    //link(rel='stylesheet', href='/bootstrap/dist/css/bootstrap.css')
+    //<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    link(rel='stylesheet', href='/css/index.css')
+
+    //block css
+
+    //script(src='/jquery/dist/jquery.js')
+    //script(src='/bootstrap/dist/js/bootstrap.js')
+    //script(src='/bootstrap/dist/js/bootstrap.min.js')
+    //script(src='/js/jquery.min.js')
+    //script(src='/js/moment.min.js')
+    //script(src='/js/transition.js')
+    //script(src='/js/collapse.js')
+
+    //script(src='/js/bootstrap-datetimepicker.min.js')
+    //script(src='/js/bootstrap-multiselect.js')
+    //script(src='/js/d3.v3.min.js')
+    //script(src='/js/ol.js')
+    //script(src='/js/crossfilter.js')
+    //script(src='/js/dc.js')
+    //script(src='/js/js.js')
+
+
+
+
+
+    block scripts
+
+
+  body
+    .header
+      h2.page-title Welcome to THEMO Website
+
+
+
+      ul.nav
+        li: a(href='/' id='/') Home
+        li: a(href='/buoys' id='buoys') Buoys
+        li: a(href='/graph' id='graph') Graph
+        li: a(href='/login') login
+
+        <div class="dropdown">
+          <button class="dropbtn">Links</button>
+          // <a href="#">Links</a>
+          <div class="dropdown-content">
+            <a href="http://marsci.haifa.ac.il/" target="_blank">School of marine science</a>
+            <a href="http://tabs.gerg.tamu.edu/tglo/" target="_blank">Texas A&M</a>
+          </div>
+        </div>
+
+
+
+
+
+    .main-content
+      block content
+
+    .footer
+      p Copyright © 2017 themo@univ.haifa.ac.il
+
+
+  script(src='scripts/default.js')

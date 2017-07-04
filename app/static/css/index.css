@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,700");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Source Code Pro', monospace;
+}
+.header {
+  background: url("../img/header.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  min-height: 100px;
+  position: fixed /* Set the navbar to fixed position */;
+  top: 0 /* Position the navbar at the top of the page */;
+  width: 100% /* Full width */;
+}
+.header .page-title {
+  font-weight: 600;
+  font-size: 28px;
+  text-align: center;
+  padding: 100px;
+  text-transform: uppercase;
+  color: #000;
+}
+.nav {
+  background: #000;
+  text-align: center;
+}
+.nav li {
+  display: inline-block;
+}
+.nav a {
+  display: inline-block;
+  padding: 20px;
+  color: #fff;
+  text-decoration: none;
+}
+.nav a:hover,
+.nav a:active {
+  background-color: #3ab795;
+  text-decoration: underline;
+}
+
+.nav li:active {
+  background-color: #3ab795;
+}
+
+
+.main-content {
+  margin: 50px auto;
+  max-width: 1000px;
+  margin-top: 350px;
+}
+.main-content p {
+  line-height: 1.6;
+  margin-bottom: 1.7em;
+}
+.main-content table {
+  border-collapse: collapse;
+  width: 120%;
+  border: 1px solid #000;
+  table-layout: fixed;
+  font-size: 12px;
+}
+.main-content td,
+.main-content th {
+  text-align: left;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  border: 1px solid #000;
+}
+.main-content th {
+  font-size: 14px;
+}
+.main-content tr:hover {
+  background-color: #f5f5f5;
+}
+.main-content .chk_width {
+  width: 50px;
+}
+.footer {
+  margin: 50px auto;
+  max-width: 600px;
+  border-top: 1px solid #444;
+  padding: 20px 0;
+}
+.footer p {
+  color: #444;
+  font-size: 12px;
+  text-align: center;
+}
+.footer th {
+  text-align: left;
+}
+/* added to support drop down menu */
+.dropbtn {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: #000;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
