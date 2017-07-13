@@ -2,6 +2,9 @@ var express = require('express')
   , logger = require('morgan')
   , fs = require('fs')
   , app = express()
+  , bodyParser = require('body-parser')
+  , jsonParser = bodyParser.json()
+  , urlencodedParser = bodyParser.urlencoded({ extended: false })
   , template_homepage = require('jade').compileFile(__dirname + '/source/templates/homepage.jade')
   , template_buoys = require('jade').compileFile(__dirname + '/source/templates/buoys.jade')
 
@@ -31,7 +34,7 @@ app.use(express.static(__dirname + '/../bower_components'));
 fs.readdirSync(__dirname + '/controllers').forEach(function (file) {
   if(file.substr(-3) == '.js') {
       route = require('./controllers/' + file);
-      route.controller(app);
+      route.controller(app, urlencodedParser);
   }
 });
 

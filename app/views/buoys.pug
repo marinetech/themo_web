@@ -3,7 +3,7 @@ extend default
 
 block content
 
-  each buoy in data
+  each buoy in b_data
     h4.
       Buoy name: #{buoy.name} (Depth: #{buoy.depth}m) <br> <br>
 
@@ -12,15 +12,15 @@ block content
         tr
           th.chk_width
           th sensor
-          th manufacturer
+          th description
           th model
           th last-calibration
       tbody
-        each sensor in buoy.sensors
+        each sensor in s_data
           tr
             td <input type="checkbox" value="#{sensor._id}" class="chbox";/>
             td #{sensor.name}
-            td #{sensor.manufacturer}
+            td #{sensor.description}
             td #{sensor.model}
             td #{sensor.calibratedOn.toDateString()}
 

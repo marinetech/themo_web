@@ -60,10 +60,17 @@ function getQueryParam() {
     ret = false;
   }
 
-  var str = "start_date: " + start_date + "\n";
-  str += "end_date: " + end_date + "\n";
-  str += "start_time: " + start_time + "\n";
-  str += "end_time: " +  end_time + "\n";
+  if (start_time === "") {
+    invalid_field(document.getElementById("start_time"))
+    ret = false;
+  }
+
+  if (end_time === "") {
+    invalid_field(document.getElementById("end_time"))
+    ret = false;
+  }
+
+
   str += "interval: " +  interval + "\n";
   str += "units: " +  units + "\n";
 
@@ -73,11 +80,11 @@ function getQueryParam() {
 
 
 function getReport() {
-  //var sensors = getSensors();
-  getQueryParam();
-  //if (sensors.length > 0) {
-    //post('/graph/', {list: sensors});
-  //} else {
-    //alert("None of the sensors was checked");
-  //}
+  var sensors = getSensors();
+  //getQueryParam();
+  if (sensors.length > 0) {
+    post('/graph/', {list: sensors});
+  } else {
+    alert("None of the sensors was checked");
+  }
 }
