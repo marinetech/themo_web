@@ -83,7 +83,7 @@ function getReport() {
   var sensors = getSensors();
   //getQueryParam();
   if (sensors.length > 0) {
-    post('/graph/', {list: sensors});
+    post('/buoys/', {list: sensors});
   } else {
     alert("None of the sensors was checked");
   }
