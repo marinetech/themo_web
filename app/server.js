@@ -13,7 +13,10 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise; // solution for mongoose Promise warrning
 var strConnection = 'mongodb://127.0.0.1/themo';
 console.log("connecting to themo db...");
-mongoose.connect(strConnection);
+// mongoose.connect(strConnection);
+var promise = mongoose.connect(strConnection, {
+  useMongoClient: true,
+});
 var db = mongoose.connection;
 
 

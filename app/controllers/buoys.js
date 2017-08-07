@@ -26,6 +26,7 @@ module.exports.controller = function(app, parser) {
       var sensorsProcessed = 0;
       csv_dir = __dirname + "/../../csv";
       zip_name = csv_dir + "/csv.zip";
+      // clean_csv_area(csv_dir);
 
       for (var i = 0; i < arr_sensors.length; i++) {
           sid = arr_sensors[i];
@@ -76,7 +77,7 @@ zipit = function (csv_dir, zip_name) {
 clean_csv_area = function(csv_dir) {
   var files = fs.readdirSync(csv_dir);
   for(var i in files) {
-    fs.unlink(path.join(csv_dir, files[i]), err => {});
+    fs.unlinkSync(path.join(csv_dir, files[i]), err => {});
   }
 }
 

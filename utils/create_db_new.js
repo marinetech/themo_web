@@ -46,15 +46,15 @@ function create_schema(callback) {
 
   // create buoy object from it's schema
   //var Buoy = mongoose.model('Buoy', buoy_model);
-  var shallow = new buoy_model ({
-    name: 'shallow',
-    depth: 40
+  var tabs225m09 = new buoy_model ({
+    name: 'tabs225m09',
+    depth: 124
   });
   //
   // // at this point the document is ready, so we can save it to DB
-  shallow.save(function(err) {
+  tabs225m09.save(function(err) {
     if (err) throw err;
-    console.log('bouy was added: shallow');
+    console.log('bouy was added: tabs225m09');
   });
 
 
@@ -66,21 +66,34 @@ function create_schema(callback) {
   var now = new Date();
   var sensors = [];
 
-  sensors.push({ name: 'adcp', description: 'Acoustic Doppler Current Profiler', manufacturer: 'Nortek', model: 'signature 250',  buoy_name: 'shallow', buoy_name: 'shallow', calibratedOn: now });
-  sensors.push({ name: 'dcl', description: 'Near Surface Doppler Current Sensor', manufacturer: 'Aanderaa', model: 'DCS-4100R',  buoy_name: 'shallow', calibratedOn: now});
-  sensors.push({ name: 'flntu', description: 'Fluorometer', manufacturer: 'WetLabs', model: 'flntu',  buoy_name: 'shallow', calibratedOn: now});
-  sensors.push({ name: 'microcat', description: 'Conductivity and temperature sensor', manufacturer: 'Seabird Electronics', model: 'SBE37-SI Shallow Housing',  buoy_name: 'shallow', calibratedOn: now});
-  sensors.push({ name: 's9', description: ' ULTI Modem Underwater Inductive Modem', manufacturer: 'Sound Nine', model: 'ULTI Modem',  buoy_name: 'shallow', calibratedOn: now});
-  sensors.push({ name: 'metpak', description: 'All in one MET sensor', manufacturer: 'Gill', model: 'MetPak',  buoy_name: 'shallow', calibratedOn: now});
-  sensors.push({ name: 'windsonic', description: 'Anemometer', manufacturer: 'Gill', model: 'Windsonic',  buoy_name: 'shallow', calibratedOn: now});
-  sensors.push({ name: 'spp', description: 'Standard Precision Pyranometer (shortwave Iradiance)', manufacturer: 'Eppley Laboratories', model: 'SPP',  buoy_name: 'shallow', calibratedOn: now});
-  sensors.push({ name: 'pir',description: 'Precision Infrared Radiometer (longwave Iradiance)', manufacturer: 'Eppley Laboratories', model: 'PIR',  buoy_name: 'shallow', calibratedOn: now});
-  sensors.push({ name: 'mp101a', description: 'Temp/Humidity Sensor', manufacturer: 'TRDI', model: 'MP101A',  buoy_name: 'shallow', calibratedOn: now});
-  sensors.push({ name: 'barometer', description: 'Barometric Pressure', manufacturer: 'Vaisala', model: 'PTB210',  buoy_name: 'shallow', calibratedOn: now});
-  sensors.push({ name: 'waves', description: 'Waves', manufacturer: 'MicroStrain', model: '3DM-GX25',  buoy_name: 'shallow', calibratedOn: now});
-  sensors.push({ name: 'internal', description: 'Internal Humidity and Temperature Sensor', manufacturer: 'PreCon', model: 'HS-2000',  buoy_name: 'shallow', calibratedOn: now});
-  sensors.push({ name: 'gps', description: 'GPS Sensor', manufacturer: 'Garmin', model: 'Garmin 16HV',  buoy_name: 'shallow', calibratedOn: now});
-  sensors.push({ name: 'compass', description: 'Compass', manufacturer: 'Honeywell', model: 'HMR3300R',  buoy_name: 'shallow', calibratedOn: now});
+  var tabs225m09_s9list = {'A016': '4',
+                           'A00B': '14',
+                           'A00T': '23',
+                           'A00H': '34',
+                           'A00W': '43',
+                           'A00D': '52',
+                           'A00A': '61',
+                           'A00E': '70',
+                           'A00C': '79',
+                           'A015': '79',
+  };
+
+  sensors.push({ name: 'adcp', description: 'Acoustic Doppler Current Profiler', manufacturer: 'Nortek', model: 'signature 250',  buoy_name: 'tabs225m09', calibratedOn: now });
+  sensors.push({ name: 'dcs', description: 'Near Surface Doppler Current Sensor', manufacturer: 'Aanderaa', model: 'DCS-4100R',  buoy_name: 'tabs225m09', calibratedOn: now});
+  sensors.push({ name: 'flntu', description: 'Fluorometer', manufacturer: 'WetLabs', model: 'flntu',  buoy_name: 'tabs225m09', calibratedOn: now});
+  sensors.push({ name: 'microcat', description: 'Conductivity and temperature sensor', manufacturer: 'Seabird Electronics', model: 'SBE37-SI tabs225m09 Housing',  buoy_name: 'tabs225m09', calibratedOn: now});
+  sensors.push({ name: 's9', description: ' ULTI Modem Underwater Inductive Modem', manufacturer: 'Sound Nine', model: 'ULTI Modem',  buoy_name: 'tabs225m09', calibratedOn: now, tabs225m09_s9list});
+  sensors.push({ name: 'metpak', description: 'All in one MET sensor', manufacturer: 'Gill', model: 'MetPak',  buoy_name: 'tabs225m09', calibratedOn: now});
+  sensors.push({ name: 'windsonic', description: 'Anemometer', manufacturer: 'Gill', model: 'Windsonic',  buoy_name: 'tabs225m09', calibratedOn: now});
+  sensors.push({ name: 'spp', description: 'Standard Precision Pyranometer (shortwave Iradiance)', manufacturer: 'Eppley Laboratories', model: 'SPP',  buoy_name: 'tabs225m09', calibratedOn: now});
+  sensors.push({ name: 'pir',description: 'Precision Infrared Radiometer (longwave Iradiance)', manufacturer: 'Eppley Laboratories', model: 'PIR',  buoy_name: 'tabs225m09', calibratedOn: now});
+  sensors.push({ name: 'mp101a_humidity', description: 'External Temp/Humidity Sensor', manufacturer: 'TRDI', model: 'MP101A',  buoy_name: 'tabs225m09', calibratedOn: now});
+  sensors.push({ name: 'mp101a_temprature', description: 'External Temp/Humidity Sensor', manufacturer: 'TRDI', model: 'MP101A',  buoy_name: 'tabs225m09', calibratedOn: now});
+  sensors.push({ name: 'barometer', description: 'Barometric Pressure', manufacturer: 'Vaisala', model: 'PTB210',  buoy_name: 'tabs225m09', calibratedOn: now});
+  sensors.push({ name: 'waves', description: 'Waves', manufacturer: 'MicroStrain', model: '3DM-GX25',  buoy_name: 'tabs225m09', calibratedOn: now});
+  sensors.push({ name: 'internal', description: 'Internal Humidity and Temperature Sensor', manufacturer: 'PreCon', model: 'HS-2000',  buoy_name: 'tabs225m09', calibratedOn: now});
+  sensors.push({ name: 'gps', description: 'GPS Sensor', manufacturer: 'Garmin', model: 'Garmin 16HV',  buoy_name: 'tabs225m09', calibratedOn: now});
+  sensors.push({ name: 'compass', description: 'Compass', manufacturer: 'Honeywell', model: 'HMR3300R',  buoy_name: 'tabs225m09', calibratedOn: now});
 
   sensors.forEach(function(element) {
     //console.log(element["name"]);
