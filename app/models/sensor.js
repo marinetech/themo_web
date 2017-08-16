@@ -9,7 +9,8 @@ var sensorSchema = mongoose.Schema({
     manufacturer: String,
     model: String,
     buoy_name: String,
-    calibratedOn: Date
+    calibratedOn: Date,
+    child_sensors: []
 });
 
 var sensors  = mongoose.model('sensors', sensorSchema);
