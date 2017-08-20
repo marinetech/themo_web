@@ -28,16 +28,23 @@ module.exports.controller = function(app, parser) {
       zip_name = csv_dir + "/csv.zip";
       // clean_csv_area(csv_dir);
 
+      console.log("-I- sensors data request was recived")
+
       for (var i = 0; i < arr_sensors.length; i++) {
           sid = arr_sensors[i];
+          console.log("-I- processing " + sid)
           samples_model.find( {sensor_id: arr_sensors[i]}, function (err, samples) {
             if (samples.length < 1) {
-              create_empty_csv(sid, csv_dir);
+              console.log("-I- found no results " + arr_sensors[i])
+              create_empty_csv(arr_sensors[i], csv_dir);
             } else {
+              console.log("-I- found results " + arr_sensors[i])
               create_csv(samples, csv_dir);
             }
 
             sensorsProcessed++;
+
+            // sensorsProcessed++;
             if (sensorsProcessed === arr_sensors.length) {
               // csv_dir = __dirname + "/../../csv";
               // zip_name = csv_dir + "/csv.zip";
@@ -46,7 +53,7 @@ module.exports.controller = function(app, parser) {
                 if (err) {
                   console.log("error while attemting to download csv");
                 } else {
-                  clean_csv_area(csv_dir);
+                  // clean_csv_area(csv_dir);
                 }
               });
             }
@@ -71,6 +78,7 @@ zipit = function (csv_dir, zip_name) {
     }
   }
   zip.writeZip(zip_name);
+  console.log("-I- zip was written successfully")
 }
 
 
@@ -131,15 +139,18 @@ create_csv = function (samples, csv_dir) {
     for (var i =0; i < arr_csv_lines.length; i++) {
         fs.appendFileSync(csv_name, "\n" + arr_csv_lines[i].join() );
     }
+
+    console.log("-I- csv was written - " + sensor_name)
 }
 
 
 create_empty_csv = function (sensor_id, csv_dir) {
     sensors_model.findById(sensor_id, function (err, sensor) {
+    console.log("-I- empty csv processing: " + sensor_id)
     var sensor_name = sensor["name"];
     //console.log("empty csv for: " + sensor_name);
     var csv_name = path.join(csv_dir, sensor_name + ".csv");
-    console.log("csv_name: " + csv_name)
     fs.writeFileSync(csv_name, "no_data" );
+    console.log("-I- empty csv was written: " + sensor_name)
   });
 }

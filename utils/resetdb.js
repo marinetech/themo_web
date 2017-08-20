@@ -69,8 +69,8 @@ function create_schema(callback) {
   var now = new Date();
   var sensors = [];
 
-  var tabs225m09_s9_child = [ {'A016': 4}, {'A00B': 14}, {'A00T': 23}, {'A00H': 34},
-                              {'A00W': 43}, {'A00D': 52}, {'A00A': 61}, {'A00E': 70}, {'A00C': 79}, {'A015': 86}];
+  var tabs225m09_s9_child = [ {'A016': 5}, {'A00B': 14}, {'A015': 23}, {'A00H': 32},
+                              {'A00W': 41}, {'A00D': 50}, {'A00A': 59}, {'A00E': 68}, {'A00C': 77}, {'A00T': 86}];
 
 
   sensors.push({ name: 'adcp', description: 'Acoustic Doppler Current Profiler', manufacturer: 'Nortek', model: 'signature 250',  buoy_name: 'tabs225m09', calibratedOn: now });
