@@ -8,9 +8,12 @@ var dict = require("dict"); //npm install dict --save
 var fs = require('fs');
 var path = require('path');
 var AdmZip = require('adm-zip');
+var async = require('async')
 
 
 module.exports.controller = function(app, parser) {
+
+
   app.get('/buoys', function(req, res) {
       // mongoose.model('buoys') = buoys_model
       buoys_model.find(function (err, buoys_data) {
@@ -21,47 +24,39 @@ module.exports.controller = function(app, parser) {
       });
   });
 
+
   app.post('/buoys', parser, function(req, res) {
       var arr_sensors = req.body["list"].split(",");
-      var sensorsProcessed = 0;
       csv_dir = __dirname + "/../../csv";
       zip_name = csv_dir + "/csv.zip";
-      // clean_csv_area(csv_dir);
 
-      console.log("-I- sensors data request was recived")
+      async.forEach(arr_sensors, function(sensorId, sensor_callback) {
+        samples_model.find( {sensor_id: sensorId}, function (err, samples) {
+          if (samples.length < 1) {
+            console.log("-I- found no results " + sensorId)
+            create_empty_csv(sensorId, csv_dir, sensor_callback);
+          } else {
+            console.log("-I- found results " + sensorId)
+            create_csv(samples, csv_dir, sensor_callback);
+          }
+      })
+      }, function(err) {
+        if (err) return sensor_callback(err);
+        zipit(csv_dir, zip_name);
+        res.download(zip_name, 'sensors.zip', function(err) {
+          if (err) {
+            console.log("error while attemting to download csv");
+          } else {
+            clean_csv_area(csv_dir);
+          }
+        })
+      });
 
-      for (var i = 0; i < arr_sensors.length; i++) {
-          sid = arr_sensors[i];
-          console.log("-I- processing " + sid)
-          samples_model.find( {sensor_id: arr_sensors[i]}, function (err, samples) {
-            if (samples.length < 1) {
-              console.log("-I- found no results " + arr_sensors[i])
-              create_empty_csv(arr_sensors[i], csv_dir);
-            } else {
-              console.log("-I- found results " + arr_sensors[i])
-              create_csv(samples, csv_dir);
-            }
-
-            sensorsProcessed++;
-
-            // sensorsProcessed++;
-            if (sensorsProcessed === arr_sensors.length) {
-              // csv_dir = __dirname + "/../../csv";
-              // zip_name = csv_dir + "/csv.zip";
-              zipit(csv_dir, zip_name);
-              res.download(zip_name, 'sensors.zip', function(err) {
-                if (err) {
-                  console.log("error while attemting to download csv");
-                } else {
-                  // clean_csv_area(csv_dir);
-                }
-              });
-            }
-          });
-      }
-      // res.redirect('back');
-  }); //end of app.post
+  }); // end of app.post callback
 } //end of controller
+
+
+
 
 
 zipit = function (csv_dir, zip_name) {
@@ -95,7 +90,7 @@ clean_str = function (str) {
 }
 
 
-create_csv = function (samples, csv_dir) {
+create_csv = function (samples, csv_dir, callback) {
 
     var dict_csv = dict({});
     var arr_csv_headers = []
@@ -141,10 +136,11 @@ create_csv = function (samples, csv_dir) {
     }
 
     console.log("-I- csv was written - " + sensor_name)
+    callback()
 }
 
 
-create_empty_csv = function (sensor_id, csv_dir) {
+create_empty_csv = function (sensor_id, csv_dir, callback) {
     sensors_model.findById(sensor_id, function (err, sensor) {
     console.log("-I- empty csv processing: " + sensor_id)
     var sensor_name = sensor["name"];
@@ -152,5 +148,6 @@ create_empty_csv = function (sensor_id, csv_dir) {
     var csv_name = path.join(csv_dir, sensor_name + ".csv");
     fs.writeFileSync(csv_name, "no_data" );
     console.log("-I- empty csv was written: " + sensor_name)
+    callback();
   });
 }
