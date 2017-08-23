@@ -10,7 +10,15 @@ var sensorSchema = mongoose.Schema({
     model: String,
     buoy_name: String,
     calibratedOn: Date,
-    child_sensors: []
+
+    // to be used for sound-nine
+    child_sensors: [],
+
+    // to be  used for flntu - Dark Counts/Scale Factor constants for Chlorophyll & Nephelometric Turbidity unit.
+    chl_dark_count: Number,
+    chl_sf: Number,
+    ntu_dark_count: Number,
+    ntu_sf: Number
 });
 
 var sensors  = mongoose.model('sensors', sensorSchema);

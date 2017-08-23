@@ -88,3 +88,8 @@ function getReport() {
     alert("None of the sensors was checked");
   }
 }
+
+
+function test() {
+  alert("test")
+}

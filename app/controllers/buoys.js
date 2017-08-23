@@ -33,10 +33,8 @@ module.exports.controller = function(app, parser) {
       async.forEach(arr_sensors, function(sensorId, sensor_callback) {
         samples_model.find( {sensor_id: sensorId}, function (err, samples) {
           if (samples.length < 1) {
-            console.log("-I- found no results " + sensorId)
             create_empty_csv(sensorId, csv_dir, sensor_callback);
           } else {
-            console.log("-I- found results " + sensorId)
             create_csv(samples, csv_dir, sensor_callback);
           }
       })
@@ -73,7 +71,6 @@ zipit = function (csv_dir, zip_name) {
     }
   }
   zip.writeZip(zip_name);
-  console.log("-I- zip was written successfully")
 }
 
 
@@ -135,19 +132,15 @@ create_csv = function (samples, csv_dir, callback) {
         fs.appendFileSync(csv_name, "\n" + arr_csv_lines[i].join() );
     }
 
-    console.log("-I- csv was written - " + sensor_name)
     callback()
 }
 
 
 create_empty_csv = function (sensor_id, csv_dir, callback) {
     sensors_model.findById(sensor_id, function (err, sensor) {
-    console.log("-I- empty csv processing: " + sensor_id)
     var sensor_name = sensor["name"];
-    //console.log("empty csv for: " + sensor_name);
     var csv_name = path.join(csv_dir, sensor_name + ".csv");
     fs.writeFileSync(csv_name, "no_data" );
-    console.log("-I- empty csv was written: " + sensor_name)
     callback();
   });
 }
