@@ -8,7 +8,7 @@ body {
   font-family: 'Source Code Pro', monospace;
 }
 .header {
-  background: url("../img/header.jpg");
+  background: url("../img/buoy3.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -43,12 +43,20 @@ body {
   background-color: #3ab795;
   text-decoration: underline;
 }
-
-.nav li:active {
-  background-color: #3ab795;
+.header #logo_left {
+  float: left;
+  width: 85px;
+  height: 85px;
+  margin-top: 70px;
+  margin-left: 50px;
 }
-
-
+.header #logo_right {
+  float: right;
+  width: 100px;
+  height: 100px;
+  margin-top: 70px;
+  margin-right: 50px;
+}
 .main-content {
   margin: 50px auto;
   max-width: 1000px;
@@ -63,7 +71,7 @@ body {
   width: 120%;
   border: 1px solid #000;
   table-layout: fixed;
-  font-size: 12px;
+  font-size: 13px;
 }
 .main-content td,
 .main-content th {

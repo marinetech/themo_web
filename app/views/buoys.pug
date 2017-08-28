@@ -17,8 +17,8 @@ block content
           th last-calibration
       tbody
         each sensor in s_data
-          <tr onclick="test()">
-            td <input type="checkbox" value="#{sensor._id}" class="chbox";/>
+          <tr onclick="rowClick(this)">
+            td <input type="checkbox" value="#{sensor._id}" class="chbox" onclick="this.checked=!this.checked"/>
             td #{sensor.name}
             td #{sensor.description}
             td #{sensor.model}

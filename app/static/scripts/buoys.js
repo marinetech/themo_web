@@ -10,6 +10,7 @@ function post(path, params, method) {
             hiddenField.setAttribute("type", "hidden");
             hiddenField.setAttribute("name", key);
             hiddenField.setAttribute("value", params[key]);
+            // alert("key: " + key + "\nvalue: " + params[key])
             form.appendChild(hiddenField);
          }
     }
@@ -42,10 +43,6 @@ function invalid_field(field) {
 function getQueryParam() {
   var start_date = document.getElementById("start_date").value;
   var end_date   = document.getElementById("end_date").value;
-  var start_time = document.getElementById("start_time").value;
-  var end_time   = document.getElementById("end_time").value;
-  var interval   = document.getElementById("interval").value;
-  var units      = document.getElementById("units").value;
 
   //validation
   var ret = true;
@@ -60,17 +57,6 @@ function getQueryParam() {
     ret = false;
   }
 
-  if (start_time === "") {
-    invalid_field(document.getElementById("start_time"))
-    ret = false;
-  }
-
-  if (end_time === "") {
-    invalid_field(document.getElementById("end_time"))
-    ret = false;
-  }
-
-
   str += "interval: " +  interval + "\n";
   str += "units: " +  units + "\n";
 
@@ -81,15 +67,18 @@ function getQueryParam() {
 
 function getReport() {
   var sensors = getSensors();
-  //getQueryParam();
+  var start_date = document.getElementById("start_date").value;
+  var end_date   = document.getElementById("end_date").value;
+  // alert("start_date: " + start_date + "\nend_date: " + end_date)
   if (sensors.length > 0) {
-    post('/buoys/', {list: sensors});
+    post('/buoys/', {list: sensors, s_date: start_date, e_date: end_date});
   } else {
     alert("None of the sensors was checked");
   }
 }
 
 
-function test() {
-  alert("test")
+function rowClick(row) {
+  var c=row.getElementsByTagName('input')[0];
+  c.checked=!c.checked;
 }

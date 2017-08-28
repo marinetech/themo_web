@@ -27,11 +27,16 @@ module.exports.controller = function(app, parser) {
 
   app.post('/buoys', parser, function(req, res) {
       var arr_sensors = req.body["list"].split(",");
+      var s_date = req.body["s_date"];
+      if (s_date === "") {s_date = "2000-01-01"}
+      var e_date = req.body["e_date"];
+      if (e_date === "") {e_date = "2100-01-01"}
+
       csv_dir = __dirname + "/../../csv";
       zip_name = csv_dir + "/csv.zip";
 
       async.forEach(arr_sensors, function(sensorId, sensor_callback) {
-        samples_model.find( {sensor_id: sensorId}, function (err, samples) {
+        samples_model.find( {sensor_id: sensorId, d_stamp: {$gte: s_date, $lte: e_date} }, function (err, samples) {
           if (samples.length < 1) {
             create_empty_csv(sensorId, csv_dir, sensor_callback);
           } else {
