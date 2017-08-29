@@ -64,6 +64,17 @@ app.get('/graph', function (req, res, next) {
 })
 
 
+app.get('/login', function (req, res, next) {
+  try {
+    //var html = template_homepage({ title: 'Home' })
+    //res.send(html)
+    res.render('login', { title: 'Hey', message: 'Hello there!' })
+  } catch (e) {
+    next(e)
+  }
+})
+
+
 // app.get('/buoys', function (req, res, next) {
 //   try {
 //     //var html = template_buoys({ title: 'buoys' })

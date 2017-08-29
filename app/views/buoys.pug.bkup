@@ -14,7 +14,7 @@ block content
           th sensor
           th description
           th model
-          
+          th last-calibration
       tbody
         each sensor in s_data
           <tr onclick="rowClick(this)">
@@ -22,7 +22,7 @@ block content
             td #{sensor.name}
             td #{sensor.description}
             td #{sensor.model}
-
+            td #{sensor.calibratedOn.toDateString()}
 
     <br>
     <br>
@@ -34,16 +34,34 @@ block content
           th.chk_width
           th Start Date
           th End Date
+          th interval
           th
-
       tbody
         tr
           td
           td <input type="date" id="start_date" min="2017-07-01">
           td <input type="date" id="end_date" min="2017-17-02">
+          td <input type="text" id="interval" value=5>
           td <button onclick="getReport()">Download</button>
-
-
+    table
+      thead
+        tr
+          th.chk_width
+          th Start Time
+          th End Time
+          th interval units
+          th
+      tbody
+        tr
+          td
+          td <input type="time" id="start_time" >
+          td <input type="time" id="end_time">
+          td <select id="units">
+                option(value="days") days
+                option(value="hours") hours
+                option(value="minutes") minutes
+                option(value="seconds") seconds
+          td  <button onclick="getReport()">Submit</button>
 
 
 
