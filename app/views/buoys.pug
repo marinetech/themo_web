@@ -3,49 +3,57 @@ extend default
 
 block content
 
+
   each buoy in b_data
     h4.
       Buoy name: #{buoy.name} (Depth: #{buoy.depth}m) <br> <br>
 
-    table()
-      thead
-        tr
-          th.chk_width
-          th sensor
-          th description
-          th model
-          
-      tbody
-        each sensor in s_data
-          <tr onclick="rowClick(this)">
-            td <input type="checkbox" value="#{sensor._id}" class="chbox" onclick="this.checked=!this.checked"/>
-            td #{sensor.name}
-            td #{sensor.description}
-            td #{sensor.model}
+    .container
+
+        table
+          thead
+            tr
+              th.chk_width
+              th sensor
+              th description
+              th model
+
+          tbody
+            each sensor in s_data
+              unless sensor.buoy_name != buoy.name
+                <tr onclick="rowClick(this)">
+                  td <input type="checkbox" value="#{sensor._id}" class="chbox" onclick="this.checked=!this.checked"/>
+                  td #{sensor.name}
+                  td #{sensor.description}
+                  td #{sensor.model}
+
+
+        <br>
+        <br>
+
+
+        table
+          thead
+            tr
+              th.chk_width
+              th Start Date
+              th End Date
+              th
+
+          tbody
+            tr
+              td
+              td <input type="date" id="start_date" min="2017-07-01">
+              td <input type="date" id="end_date" min="2017-17-02">
+              td <button onclick="getReport()">Download</button>
+
 
 
     <br>
     <br>
     <br>
-
-    table
-      thead
-        tr
-          th.chk_width
-          th Start Date
-          th End Date
-          th
-
-      tbody
-        tr
-          td
-          td <input type="date" id="start_date" min="2017-07-01">
-          td <input type="date" id="end_date" min="2017-17-02">
-          td <button onclick="getReport()">Download</button>
-
-
-
-
+    <br>
+    <br>
 
 
 

@@ -11,7 +11,7 @@ body {
   background: url("../img/buoy3.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   min-height: 100px;
   position: fixed /* Set the navbar to fixed position */;
   top: 0 /* Position the navbar at the top of the page */;
@@ -24,10 +24,6 @@ body {
   padding: 100px;
   text-transform: uppercase;
   color: #000;
-}
-.under-construction {
-  text-align: center;
-  width 80%  
 }
 .nav {
   background: #000;
@@ -72,7 +68,7 @@ body {
 }
 .main-content table {
   border-collapse: collapse;
-  width: 120%;
+  width: 85%;
   border: 1px solid #000;
   table-layout: fixed;
   font-size: 13px;

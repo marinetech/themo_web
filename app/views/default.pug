@@ -1,9 +1,13 @@
 doctype html
 html
   head
-    title Welcome to THEMO Web-Site
 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     link(rel='stylesheet', href='/css/index.css')
+    title Welcome to THEMO Web-Site
 
     block css
 
@@ -11,35 +15,34 @@ html
 
 
   body
-    .header
-      a(href='http://www.haifa.ac.il/index.php/en/' target='_blank') <img id="logo_left" src="img/univ_haifa.png" alt="Haifa logo" />
-      a(href='https://www.tamu.edu/' target='_blank') <img id="logo_right" src="img/am.png" alt="A&M logo"/>
-      h2.page-title Welcome to THEMO Website
+      .header
+        a(href='http://www.haifa.ac.il/index.php/en/' target='_blank') <img class="img-fluid" id="logo_left" src="img/univ_haifa.png" alt="Haifa logo" />
+        a(href='https://www.tamu.edu/' target='_blank') <img id="logo_right" src="img/am.png" alt="A&M logo"/>
+        h2.page-title Welcome to THEMO Website
 
-      ul.nav
-        li: a(href='/' id='/') Home
-        li: a(href='/buoys' id='buoys') Buoys
-        li: a(href='/graph' id='graph') Graph
-        li: a(href='/login' id='login') login
+        ul.nav
+          li: a(href='/' id='/') Home
+          li: a(href='/buoys' id='buoys') Buoys
+          li: a(href='/graph' id='graph') Graph
+          li: a(href='/login' id='login') login
 
-        <div class="dropdown">
-          <button class="dropbtn">Links</button>
-          // <a href="#">Links</a>
-          <div class="dropdown-content">
-            <a href="http://marsci.haifa.ac.il/" target="_blank">School of marine science</a>
-            <a href="http://tabs.gerg.tamu.edu/tglo/" target="_blank">Texas A&M Buoys</a>
+          <div class="dropdown">
+            <button class="dropbtn">Links</button>
+            // <a href="#">Links</a>
+            <div class="dropdown-content">
+              <a href="http://marsci.haifa.ac.il/" target="_blank">School of marine science</a>
+              <a href="http://tabs.gerg.tamu.edu/tglo/" target="_blank">Texas A&M Buoys</a>
+            </div>
           </div>
-        </div>
+
+      .main-content
+        block content
+
+      .footer
+        p Copyright © 2017 themo@univ.haifa.ac.il
 
 
-
-
-
-    .main-content
-      block content
-
-    .footer
-      p Copyright © 2017 themo@univ.haifa.ac.il
-
-
+  <script src="scripts/jquery.slim.min.js"></script>
+  <script src="scripts/tether.min.js"></script>
+  <script src="scripts/bootstrap.min.js"></script>
   script(src='scripts/default.js')
