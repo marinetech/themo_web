@@ -28,7 +28,7 @@ db.once('open', function() {
 
 
 
-// if the schema is already exists - drop it.
+// if the schema already exists - drop it.
 function drop_buoys_collection(callback) {
   console.log("dropping existing buoys data");
   mongoose.connection.db.dropCollection('buoys', function(err, result) {});
@@ -77,7 +77,7 @@ function create_schema_tabs225m09(callback) {
   sensors.push({ name: 'adcp', description: 'Acoustic Doppler Current Profiler', manufacturer: 'Nortek', model: 'signature 250',  buoy_name: 'tabs225m09', calibratedOn: now });
   sensors.push({ name: 'dcs', description: 'Near Surface Doppler Current Sensor', manufacturer: 'Aanderaa', model: 'DCS-4100R',  buoy_name: 'tabs225m09', calibratedOn: now});
   sensors.push({ name: 'flntu', description: 'Fluorometer', manufacturer: 'WetLabs', model: 'flntu',  buoy_name: 'tabs225m09', calibratedOn: now, chl_dark_count: 47, chl_sf: 0.0119, ntu_dark_count: 50, ntu_sf: 0.0061});
-  sensors.push({ name: 'microcat', description: 'Conductivity and temperature sensor', manufacturer: 'Seabird Electronics', model: 'SBE37-SI tabs225m09 Housing',  buoy_name: 'tabs225m09', calibratedOn: now});
+  sensors.push({ name: 'microcat', description: 'Conductivity and temperature sensor', manufacturer: 'Seabird Electronics', model: 'SBE37-SI',  buoy_name: 'tabs225m09', calibratedOn: now});
   sensors.push({ name: 's9', description: ' ULTI Modem Underwater Inductive Modem', manufacturer: 'Sound Nine', model: 'ULTI Modem',  buoy_name: 'tabs225m09', calibratedOn: now, child_sensors: tabs225m09_s9_child });
   sensors.push({ name: 'metpak', description: 'All in one MET sensor', manufacturer: 'Gill', model: 'MetPak',  buoy_name: 'tabs225m09', calibratedOn: now});
   sensors.push({ name: 'windsonic', description: 'Anemometer', manufacturer: 'Gill', model: 'Windsonic',  buoy_name: 'tabs225m09', calibratedOn: now});
