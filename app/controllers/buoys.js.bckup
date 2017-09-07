@@ -9,7 +9,6 @@ var fs = require('fs');
 var path = require('path');
 var AdmZip = require('adm-zip');
 var async = require('async')
-var mongotocsv = require('mongo-to-csv');
 
 
 module.exports.controller = function(app, parser) {
@@ -36,56 +35,29 @@ module.exports.controller = function(app, parser) {
       csv_dir = __dirname + "/../../csv";
       zip_name = csv_dir + "/csv.zip";
 
-      // async.forEach(arr_sensors, function(sensorId, sensor_callback) {
-      //   samples_model.find( {sensor_id: sensorId, d_stamp: {$gte: s_date, $lte: e_date} }, function (err, samples) {
-      //     if (samples.length < 1) {
-      //       create_empty_csv(sensorId, csv_dir, sensor_callback);
-      //     } else {
-      //       create_csv(samples, csv_dir, sensor_callback);
-      //     }
-      //   }) //samples_model.find
-      // }, function(err) {
-      //   if (err) return sensor_callback(err);
-      //   zipit(csv_dir, zip_name);
-      //   res.download(zip_name, 'sensors.zip', function(err) {
-      //     if (err) {
-      //       console.log("error while attemting to download csv");
-      //     } else {
-      //       clean_csv_area(csv_dir);
-      //     }
-      //   })
-      // });
-
-
-      // mongoexport --type=csv  -q '{ "sensor_id": "59b0ce8b57e69a661ad6eed4"}' -d themo -c samples -f sensor_name,d_stamp,t_stamp -o /home/ilan/projects/themo_web/app/controllers/../../csv/59b0ce8b57e69a661ad6eed4.csv
       async.forEach(arr_sensors, function(sensorId, sensor_callback) {
-        var query = `'{ "sensor_id": "${sensorId}" }'`
-        let options = {
-            database: 'themo', // required
-            collection: 'samples', // required
-            fields: ['sensor_name','d_stamp', 't_stamp'], // required
-            output: csv_dir + '/' + sensorId + '.csv', // required
-            allValidOptions: `-q ${query}`
-        };
-        mongotocsv.export(options, function (err, success) {
-            console.log(err);
-            console.log(success);
-            sensor_callback()
-        });
+        console.log("start quering mongo")
+        samples_model.find( {sensor_id: sensorId, d_stamp: {$gte: s_date, $lte: e_date} }, function (err, samples) {
+          console.log("end quering mongo")
+          if (samples.length < 1) {
+            create_empty_csv(sensorId, csv_dir, sensor_callback);
+          } else {
+            create_csv(samples, csv_dir, sensor_callback);
+          }
+      })
       }, function(err) {
         if (err) return sensor_callback(err);
         zipit(csv_dir, zip_name);
-        res.download(zip_name, `Sensors_${Date.now()}.zip`, function(err) {
+        res.download(zip_name, 'sensors.zip', function(err) {
           if (err) {
-            console.log("error while attempting to download csv");
+            console.log("error while attemting to download csv");
           } else {
             clean_csv_area(csv_dir);
           }
         })
       });
 
-
-  }); // end of app.post
+  }); // end of app.post callback
 } //end of controller
 
 
@@ -189,6 +161,7 @@ create_csv = function (samples, csv_dir, callback) {
       });
     });
 }
+
 
 
 create_empty_csv = function (sensor_id, csv_dir, callback) {
