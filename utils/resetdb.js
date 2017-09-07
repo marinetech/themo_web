@@ -102,56 +102,59 @@ function create_schema_tabs225m09(callback) {
 
 
 function create_schema_tabs225m10(callback) {
-  console.log("recreating the date for tabs225m10");
 
+  callback(); //this function is just a place holder for now; no need to do anything just return.
 
-
-  // and this is the schema for the buoys (with embedded sensor schema)
-  var buoy_model = require('../app/models/buoy');
-
-
-  // create buoy object from it's schema
-  //var Buoy = mongoose.model('Buoy', buoy_model);
-  var tabs225m09 = new buoy_model ({
-    name: 'tabs225m10',
-    depth: 124
-  });
+  // console.log("recreating the date for tabs225m10");
   //
-  // // at this point the document is ready, so we can save it to DB
-  tabs225m09.save(function(err) {
-    if (err) throw err;
-    console.log('bouy was added: tabs225m10');
-  });
-
-
-  // this is the schema for the sensors
-  var sensor_model = require('../app/models/sensor');
-
-
-  //sensors (info was taken from Shlomi's excel)
-  var now = new Date();
-  var sensors = [];
-
-  var tabs225m09_s9_child = [ {'A016': 5}, {'A00B': 14}, {'A015': 23}, {'A00H': 32},
-                              {'A00W': 41}, {'A00D': 50}, {'A00A': 59}, {'A00E': 68}, {'A00C': 77}, {'A00T': 86}];
-
-
-  sensors.push({ name: 'adcp', description: 'Acoustic Doppler Current Profiler', manufacturer: 'Nortek', model: 'signature 250',  buoy_name: 'tabs225m10', calibratedOn: now });
-  sensors.push({ name: 'dcs', description: 'Near Surface Doppler Current Sensor', manufacturer: 'Aanderaa', model: 'DCS-4100R',  buoy_name: 'tabs225m10', calibratedOn: now});
-  sensors.push({ name: 'flntu', description: 'Fluorometer', manufacturer: 'WetLabs', model: 'flntu',  buoy_name: 'tabs225m10', calibratedOn: now, chl_dark_count: 47, chl_sf: 0.0119, ntu_dark_count: 50, ntu_sf: 0.0061});
-  sensors.push({ name: 'microcat', description: 'Conductivity and temperature sensor', manufacturer: 'Seabird Electronics', model: 'SBE37-SI tabs225m10 Housing',  buoy_name: 'tabs225m09', calibratedOn: now});
-  sensors.push({ name: 'metpak', description: 'All in one MET sensor', manufacturer: 'Gill', model: 'MetPak',  buoy_name: 'tabs225m10', calibratedOn: now});
-
-  sensors.forEach(function(element) {
-    //console.log(element["name"]);
-    var sensor = new sensor_model(element);
-    sensor.save(function(err) {
-      if (err) throw err;
-      console.log(' -- sensor was added: ' + element["name"]);
-    });
-  });
-
-  callback();
+  //
+  //
+  // // and this is the schema for the buoys (with embedded sensor schema)
+  // var buoy_model = require('../app/models/buoy');
+  //
+  //
+  // // create buoy object from it's schema
+  // //var Buoy = mongoose.model('Buoy', buoy_model);
+  // var tabs225m09 = new buoy_model ({
+  //   name: 'tabs225m10',
+  //   depth: 124
+  // });
+  // //
+  // // // at this point the document is ready, so we can save it to DB
+  // tabs225m09.save(function(err) {
+  //   if (err) throw err;
+  //   console.log('bouy was added: tabs225m10');
+  // });
+  //
+  //
+  // // this is the schema for the sensors
+  // var sensor_model = require('../app/models/sensor');
+  //
+  //
+  // //sensors (info was taken from Shlomi's excel)
+  // var now = new Date();
+  // var sensors = [];
+  //
+  // var tabs225m09_s9_child = [ {'A016': 5}, {'A00B': 14}, {'A015': 23}, {'A00H': 32},
+  //                             {'A00W': 41}, {'A00D': 50}, {'A00A': 59}, {'A00E': 68}, {'A00C': 77}, {'A00T': 86}];
+  //
+  //
+  // sensors.push({ name: 'adcp', description: 'Acoustic Doppler Current Profiler', manufacturer: 'Nortek', model: 'signature 250',  buoy_name: 'tabs225m10', calibratedOn: now });
+  // sensors.push({ name: 'dcs', description: 'Near Surface Doppler Current Sensor', manufacturer: 'Aanderaa', model: 'DCS-4100R',  buoy_name: 'tabs225m10', calibratedOn: now});
+  // sensors.push({ name: 'flntu', description: 'Fluorometer', manufacturer: 'WetLabs', model: 'flntu',  buoy_name: 'tabs225m10', calibratedOn: now, chl_dark_count: 47, chl_sf: 0.0119, ntu_dark_count: 50, ntu_sf: 0.0061});
+  // sensors.push({ name: 'microcat', description: 'Conductivity and temperature sensor', manufacturer: 'Seabird Electronics', model: 'SBE37-SI tabs225m10 Housing',  buoy_name: 'tabs225m09', calibratedOn: now});
+  // sensors.push({ name: 'metpak', description: 'All in one MET sensor', manufacturer: 'Gill', model: 'MetPak',  buoy_name: 'tabs225m10', calibratedOn: now});
+  //
+  // sensors.forEach(function(element) {
+  //   //console.log(element["name"]);
+  //   var sensor = new sensor_model(element);
+  //   sensor.save(function(err) {
+  //     if (err) throw err;
+  //     console.log(' -- sensor was added: ' + element["name"]);
+  //   });
+  // });
+  //
+  // callback();
 }
 
 

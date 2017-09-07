@@ -36,7 +36,9 @@ module.exports.controller = function(app, parser) {
       zip_name = csv_dir + "/csv.zip";
 
       async.forEach(arr_sensors, function(sensorId, sensor_callback) {
+        console.log("start quering mongo")
         samples_model.find( {sensor_id: sensorId, d_stamp: {$gte: s_date, $lte: e_date} }, function (err, samples) {
+          console.log("end quering mongo")
           if (samples.length < 1) {
             create_empty_csv(sensorId, csv_dir, sensor_callback);
           } else {
@@ -99,6 +101,7 @@ create_csv = function (samples, csv_dir, callback) {
     var arr_csv_lines = []
     var sensor_name = samples[0]["sensor_name"];
 
+    console.log("start onvert bson to dictionary")
     //convert bson to dictionary
     for (var i = 0; i < samples.length; i++) { //for each sample in samples
       arr_samples = JSON.stringify(samples[i]).split(","); // store in arr_samples - each element is a key/value pair
@@ -112,13 +115,18 @@ create_csv = function (samples, csv_dir, callback) {
         }
       }
     }
+    console.log("end onvert bson to dictionary")
 
+    console.log("start headers")
     //prepare headers for CSV
     arr_first_sample = JSON.stringify(samples[0]).split(",");
     for (var j = 0; j < arr_first_sample.length; j++) {
       arr_csv_headers.push(clean_str(arr_first_sample[j].split(":")[0]));
     }
+    console.log("end headers")
 
+
+    console.log("start prepare lines")
     // prepare data lines for CSV
     arr_line = []
     for (var k = 0; k < samples.length; k++) {
@@ -129,16 +137,31 @@ create_csv = function (samples, csv_dir, callback) {
       arr_csv_lines.push(arr_line);
       arr_line = []
     }
+    console.log("end prepare lines")
+
+    // // write headers and lines to csv
+    // csv_name = path.join(csv_dir, sensor_name + ".csv");
+    // fs.writeFileSync(csv_name, arr_csv_headers.join() );
+    // for (var i =0; i < arr_csv_lines.length; i++) {
+    //     fs.appendFileSync(csv_name, "\n" + arr_csv_lines[i].join() );
+    // }
+    //
+    // callback()
 
     // write headers and lines to csv
     csv_name = path.join(csv_dir, sensor_name + ".csv");
-    fs.writeFileSync(csv_name, arr_csv_headers.join() );
-    for (var i =0; i < arr_csv_lines.length; i++) {
-        fs.appendFileSync(csv_name, "\n" + arr_csv_lines[i].join() );
-    }
+    fs.writeFile(csv_name, arr_csv_headers.join(), function() {
+      var lines = "";
+      for (var i =0; i < arr_csv_lines.length; i++) {
+          lines = lines + "\n" + arr_csv_lines[i].join();
+      }
 
-    callback()
+      fs.appendFile(csv_name, lines, function() {
+        callback()
+      });
+    });
 }
+
 
 
 create_empty_csv = function (sensor_id, csv_dir, callback) {
