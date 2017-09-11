@@ -12,7 +12,7 @@ sensors["flntu"] = flntu_fields
 var microcat_fields = ['d_stamp','t_stamp','Salinity','Conductivity','Temprature']
 sensors["microcat"] = microcat_fields
 
-var s9_fields = ['d_stamp','t_stamp','s9_id', 'depath', 'temprature']
+var s9_fields = ['d_stamp','t_stamp','s9_id', 'depth', 'temprature']
 sensors["s9"] = s9_fields
 
 var metpak_fields = ['d_stamp','t_stamp','temprature','humidity','dewpoint','wind_direction','wind_speed','pressure']
