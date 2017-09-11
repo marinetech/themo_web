@@ -18,7 +18,10 @@ var sensorSchema = mongoose.Schema({
     chl_dark_count: Number,
     chl_sf: Number,
     ntu_dark_count: Number,
-    ntu_sf: Number
+    ntu_sf: Number,
+
+    // to be used on fields that have to be displayed in the web signature
+    fields_to_display: [String]
 });
 
 var sensors  = mongoose.model('sensors', sensorSchema);
