@@ -1,3 +1,10 @@
+var msg_text = "The data from the THEMO observatory was kindly shared by Dr. Roee Diamant from the Underwater Acoustic and Navigation laboratory (ANL), Dep. of Marine Technology, University of Haifa, Israel"
+
+var legal_message = "If you are downloading our data and use it in future publications, please include the following statement:\n\n"
+legal_message += msg_text
+legal_message += "\n\n\n"
+legal_message += "[This statment will be copied to your clipboard]"
+
 function post(path, params, method) {
     method = method || "post"; // Set method to post by default if not specified.
 
@@ -71,6 +78,8 @@ function getReport() {
   var end_date   = document.getElementById("end_date").value;
   // alert("start_date: " + start_date + "\nend_date: " + end_date)
   if (sensors.length > 0) {
+    alert(legal_message);
+    copyTextToClipboard(msg_text);
     post('/buoys/', {list: sensors, s_date: start_date, e_date: end_date});
   } else {
     alert("None of the sensors was checked");
@@ -81,4 +90,28 @@ function getReport() {
 function rowClick(row) {
   var c=row.getElementsByTagName('input')[0];
   c.checked=!c.checked;
+}
+
+function copyTextToClipboard(text) {
+  var textArea = document.createElement("textarea");
+
+  textArea.style.position = 'fixed';
+  textArea.style.top = 0;
+  textArea.style.left = 0;
+  textArea.style.width = '2em';
+  textArea.style.height = '2em';
+  textArea.style.padding = 0;
+  textArea.style.border = 'none';
+  textArea.style.outline = 'none';
+  textArea.style.boxShadow = 'none';
+  textArea.style.background = 'transparent';
+  textArea.value = text;
+  document.body.appendChild(textArea);
+  textArea.select();
+  try {
+    var successful = document.execCommand('copy');
+  } catch (err) {
+    console.log('Oops, unable to copy');
+  }
+  document.body.removeChild(textArea);
 }
