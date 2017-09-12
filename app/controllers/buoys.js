@@ -42,7 +42,6 @@ module.exports.controller = function(app, parser) {
       sensors_model.find( {} , function (err, sensors) {
         // create sensor map id => name
         for (var i = 0, len = sensors.length; i < len; i++) {
-          console.log(sensors[i]["_id"] + " " + sensors[i]["name"])
           key = JSON.stringify(sensors[i]["_id"])
           dict_sensors.set(key, sensors[i]["name"]);
           dict_fields.set(key, sensors[i]["fields_to_display"]);
@@ -55,6 +54,9 @@ module.exports.controller = function(app, parser) {
           var sort = `'{"d_stamp" : 1, "t_stamp" : 1}'`
           var current_sensor_name = dict_sensors.get(JSON.stringify(sensorId));
           var current_fields = dict_fields.get(JSON.stringify(sensorId));
+          if (current_fields.length < 1) {
+            current_fields = ['no_data']
+          }
           let options = {
               database: 'themo', // required
               collection: 'samples', // required
