@@ -19,7 +19,7 @@ module.exports.controller = function(app, parser) {
       // mongoose.model('buoys') = buoys_model
       buoys_model.find(function (err, buoys_data) {
         //res.send(buoys_data)
-        sensors_model.find( function (err, sensors_data) {
+        sensors_model.find( {"hidden": false}, function (err, sensors_data) {
           res.render('buoys', {b_data: buoys_data, s_data: sensors_data});
         });
       });

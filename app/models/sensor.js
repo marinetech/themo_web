@@ -5,11 +5,13 @@ var mongoose = require("mongoose");
 // this is the schema for the sensor
 var sensorSchema = mongoose.Schema({
     name: String,
+    display_name: String,
     description: String,
     manufacturer: String,
     model: String,
     buoy_name: String,
     calibratedOn: Date,
+    hidden: Boolean,
 
     // to be used for sound-nine
     child_sensors: [],
