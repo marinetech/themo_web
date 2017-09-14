@@ -1,6 +1,8 @@
 // Per Roee's request - display the folllowing message before any attempt to download data
-var msg_credit = "The data from the THEMO observatory was kindly shared by Dr. "
-msg_credit += "Roee Diamant from the Underwater Acoustic and Navigation laboratory (ANL), Dep. of Marine Technology, University of Haifa, Israel"
+var msg_credit = "The data from the THEMO observatory was kindly shared by the Texas A&M \
+- University of Haifa - Eastern Mediterranean Observatory (THEMO) project. \
+THEMO is supported by the Underwater Acoustic and Navigation laboratory (ANL), Dep. of Marine Technology,\
+ University of Haifa, Israel, and by the Geochemical and Environmental Research Group (GERG), Texas A&M University, USA.";
 var msg_download = "If you are downloading our data and use it in future publications, please include the following statement:\n\n"
 msg_download += msg_credit
 msg_download += "\n\n\n[This statment will be copied to your clipboard]"
