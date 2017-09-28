@@ -47,17 +47,8 @@ app.get('/', function (req, res, next) {
   try {
     //var html = template_homepage({ title: 'Home' })
     //res.send(html)
-    res.render('homepage', { title: 'Hey', message: 'Hello there!' })
-  } catch (e) {
-    next(e)
-  }
-})
-
-app.get('/graph', function (req, res, next) {
-  try {
-    //var html = template_homepage({ title: 'Home' })
-    //res.send(html)
-    res.render('graph', { title: 'Hey', message: 'Hello there!' })
+    // res.render('homepage', { title: 'Hey', message: 'Hello there!' })
+    res.render('homepage')
   } catch (e) {
     next(e)
   }

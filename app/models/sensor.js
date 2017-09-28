@@ -24,7 +24,7 @@ var sensorSchema = mongoose.Schema({
 
     // to be used on fields that have to be displayed in the web signature
     fields_to_display: [String]
-});
+},{ strict: false });
 
 var sensors  = mongoose.model('sensors', sensorSchema);
 module.exports = sensors;

@@ -89,6 +89,10 @@ body {
 .main-content .chk_width {
   width: 50px;
 }
+.table_graph {
+  border: 10px solid blue imporatant!;
+  background-color: grey;
+}
 .footer {
   margin: 50px auto;
   max-width: 600px;

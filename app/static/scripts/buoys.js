@@ -8,54 +8,6 @@ msg_download += msg_credit
 msg_download += "\n\n\n[This statment will be copied to your clipboard]"
 
 
-// // the following is a workaround for browsers that don't support html5 datepicker
-// var datefield=document.createElement("input")
-// datefield.setAttribute("type", "date")
-// if (datefield.type!="date"){ //if browser doesn't support input type="date", load files for jQuery UI Date Picker
-//     document.write('<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />\n')
-//     document.write('<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"><\/script>\n')
-// }
-//
-// if (datefield.type!="date"){ //if browser doesn't support input type="date", initialize date picker widget:
-//     jQuery(function($){ //on document.ready
-//         $('#start_date').datepicker({dateFormat: 'yy-mm-dd'});
-//         $('#end_date').datepicker({dateFormat: 'yy-mm-dd'});
-//     })
-// }
-
-// document.write('<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />\n')
-// document.write('<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"><\/script>\n')
-
-jQuery(function($){ //on document.ready
-        $('#start_date').datepicker({dateFormat: 'yy-mm-dd'});
-        $('#end_date').datepicker({dateFormat: 'yy-mm-dd'});
-    })
-
-
-// ---------------- functions -----------------//
-
-// currently used to post download reques
-function post(path, params, method) {
-    method = method || "post"; // Set method to post by default if not specified.
-
-    var form = document.createElement("form");
-    form.setAttribute("method", method);
-    form.setAttribute("action", path);
-    for(var key in params) {
-        if(params.hasOwnProperty(key)) {
-            var hiddenField = document.createElement("input");
-            hiddenField.setAttribute("type", "hidden");
-            hiddenField.setAttribute("name", key);
-            hiddenField.setAttribute("value", params[key]);
-            // alert("key: " + key + "\nvalue: " + params[key])
-            form.appendChild(hiddenField);
-         }
-    }
-
-    document.body.appendChild(form);
-    form.submit();
-}
-
 // get all the sensors that were checked for download
 function getSensors() {
   var checkboxes = document.getElementsByClassName("chbox");

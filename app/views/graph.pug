@@ -1,6 +1,23 @@
 extend default
 
-block content
 
-  h3.under-construction
-    | Under Construction
+block content
+  
+  table(class="table_graph")
+    tr
+      td Data Type
+          <select id="dataType">
+            each sensor in s_data
+              <option value="#{sensor._id}">#{sensor.display_name}</option>                    
+          </select>
+      td Start Date <input type="text" id="start_date">
+      td End Date <input type="text" id="end_date">
+      td <button onclick="getChartData()" id="btnDraw" type="button" align="bottom" style="margin-left: 20%">Draw Chart</button> 
+  
+  
+  <div id="curve_chart" style="width: 900px; height: 500px"></div>
+    
+    
+block scripts
+  script(type="text/javascript" src="https://www.gstatic.com/charts/loader.js")
+  script(src='scripts/graph.js')
