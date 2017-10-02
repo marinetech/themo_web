@@ -48,6 +48,7 @@ function populateChartTypeDropDown() {
     });
 }
 
+// test comment
 $(document).ready(function() {
   populateChartTypeDropDown();
 });
