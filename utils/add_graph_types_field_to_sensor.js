@@ -5,6 +5,7 @@ var async = require('async')
 sensors = {}
 sensors["barometer"] = ['last day', 'last week']
 sensors["waves"] = ['last day']
+sensors["microcat"] = ['last day']
 
 
 mongoose.Promise = global.Promise; // solution for mongoose Promise warrning

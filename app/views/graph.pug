@@ -3,19 +3,23 @@ extend default
 
 block content
   
-  table(class="table_graph")
-    tr
-      td Data Type
-          <select id="dataType">
-            each sensor in s_data
-              <option value="#{sensor._id}">#{sensor.display_name}</option>                    
-          </select>
-      td Start Date <input type="text" id="start_date">
-      td End Date <input type="text" id="end_date">
-      td <button onclick="getChartData()" id="btnDraw" type="button" align="bottom" style="margin-left: 20%">Draw Chart</button> 
+  .container
   
-  
-  <div id="curve_chart" style="width: 900px; height: 500px"></div>
+    table(class="table_graph")
+      tr
+        td Data Type
+            <select id="dataType" onchange="populateChartTypeDropDown()">
+              each sensor in s_data
+                <option value="#{sensor._id}">#{sensor.display_name}</option>                    
+            </select>
+        td Chart type   <select id="chartType" style="width: 150px">
+        td Start Date <input type="text" id="start_date">
+        td End Date <input type="text" id="end_date">
+        td(style="vertical-align:bottom") <button onclick="getChartData()" id="btnDraw" type="button" align="bottom" style="width: 150px">Draw Chart</button> 
+    
+    
+    </br></br>
+    <div id="curve_chart" style="width: 100%; height: 500px"></div>
     
     
 block scripts

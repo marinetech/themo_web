@@ -89,10 +89,7 @@ body {
 .main-content .chk_width {
   width: 50px;
 }
-.table_graph {
-  border: 10px solid blue imporatant!;
-  background-color: grey;
-}
+
 .footer {
   margin: 50px auto;
   max-width: 600px;
@@ -149,4 +146,8 @@ body {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
+}
+
+#dataType {
+  width: 150px
 }
