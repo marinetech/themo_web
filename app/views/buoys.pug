@@ -21,7 +21,7 @@ block content
           tbody
             each sensor in s_data
               unless sensor.buoy_name != buoy.name
-                <tr onclick="rowClick(this)">
+                <tr valign="top" onclick="rowClick(this)">
                   td <input type="checkbox" value="#{sensor._id}" class="chbox" onclick="this.checked=!this.checked"/>
                   td #{sensor.display_name}
                   td #{sensor.description}
