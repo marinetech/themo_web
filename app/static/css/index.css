@@ -20,8 +20,11 @@ body {
 .header .page-title {
   font-weight: 600;
   font-size: 28px;
-  text-align: center;
-  padding: 100px;
+  text-align: left;
+  padding: 5px;
+  clear: left;
+  margin-left: 40px;
+  margin-top: 5px;
   text-transform: uppercase;
   color: #000;
 }
@@ -45,22 +48,29 @@ body {
 }
 .header #logo_left {
   float: left;
-  width: 85px;
-  height: 85px;
-  margin-top: 70px;
-  margin-left: 50px;
+  width: 50px;
+  height: 50px;
+  margin-top: 60px;
+  margin-left: 80px;
+}
+.header #logo_lch {
+  width: 180px;
+  height: 50px;
+  margin-top: 60px;
+  margin-left: 40px;
+  float: left;
 }
 .header #logo_right {
-  float: right;
-  width: 100px;
-  height: 100px;
-  margin-top: 70px;
-  margin-right: 50px;
+  width: 75px;
+  height: 75px;
+  margin-top: 50px;
+  margin-left: 40px;
+  float: left;
 }
 .main-content {
   margin: 50px auto;
   max-width: 1000px;
-  margin-top: 350px;
+  margin-top: 275px;
 }
 .main-content p {
   line-height: 1.6;
@@ -89,7 +99,6 @@ body {
 .main-content .chk_width {
   width: 50px;
 }
-
 .footer {
   margin: 50px auto;
   max-width: 600px;
@@ -146,8 +155,4 @@ body {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
-}
-
-#dataType {
-  width: 150px
 }
