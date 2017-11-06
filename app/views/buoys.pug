@@ -4,11 +4,16 @@ extend default
 block content
 
 
-  each buoy in b_data
-    h4.
-      Buoy name: #{buoy.name} (Depth: #{buoy.depth}m) <br> <br>
+  
 
     .container
+      
+      each buoy in b_data
+        h5 Buoy name: #{buoy.name} 
+        h5 Depth: #{buoy.depth}m  
+        h5 <a href='https://www.marinetraffic.com/en/ais/details/ships/shipid:1336912/imo:0/mmsi:244010235/vessel:BOEI%202/_:ffe6a289b555b3cee4b9152f02bd21a3' target='_blank'> Location: 33.03513°/34.945°</a>
+        <br> 
+        <br>
 
         table
           thead
