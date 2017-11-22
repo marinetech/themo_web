@@ -9,10 +9,10 @@ sensors["dcs"] = dcs_fields
 var flntu_fields = ['d_stamp','t_stamp','chlorophyll_concentration','turbidity_units']
 sensors["flntu"] = flntu_fields
 
-var microcat_fields = ['d_stamp','t_stamp','Salinity','Conductivity','Temprature']
+var microcat_fields = ['d_stamp','t_stamp','Salinity','Conductivity','Temperature']
 sensors["microcat"] = microcat_fields
 
-var s9_fields = ['d_stamp','t_stamp','s9_id', 'depth', 'temprature']
+var s9_fields = ['d_stamp','t_stamp','s9_id', 'depth', 'temperature']
 sensors["s9"] = s9_fields
 
 var metpak_fields = ['d_stamp','t_stamp','temperature','humidity','dewpoint','wind_direction','wind_speed','pressure']
