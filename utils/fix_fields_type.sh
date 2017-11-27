@@ -92,7 +92,6 @@ db.samples.find({'sensor_name': 'dcs'}).forEach( function (x) {
   x["North[cm/s]"] = parseFloat(x["North[cm/s]"]);
   x["Abs_Speed[cm/s]"] = parseFloat(x["Abs_Speed[cm/s]"]);
   x["Abs_Tilt[Deg]"] = parseFloat(x["Abs_Tilt[Deg]"]);
-  x["DCS_MEASUREMENT"] = parseFloat(x["DCS_MEASUREMENT"]);
   x["Strength[dB]"] = parseFloat(x["Strength[dB]"]);
   x["Max_Tilt[Deg]"] = parseFloat(x["Max_Tilt[Deg]"]);
   x["Std_Tilt[Deg]"] = parseFloat(x["Std_Tilt[Deg]"]);
