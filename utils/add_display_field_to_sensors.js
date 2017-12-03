@@ -3,34 +3,34 @@ var async = require('async')
 
 
 sensors = {}
-var dcs_fields = ['d_stamp','t_stamp','Direction[DegM]','East[cm/s]','Temperature[DegC]','Heading[DegM]','North[cm/s]','Abs_Speed[cm/s]','Abs_Tilt[Deg]','Ping_Count','DCS_MEASUREMENT','Strength[dB]','Max_Tilt[Deg]','Std_Tilt[Deg]','SP_Std[cm/s]','Tilt_Y[Deg]','Tilt_X[Deg]','treshold'];
+var dcs_fields = ['d_stamp','t_stamp','Direction[DegM]','East[cm/s]','Temperature[DegC]','Heading[DegM]','North[cm/s]','Abs_Speed[cm/s]','Abs_Tilt[Deg]','Ping_Count','DCS_MEASUREMENT','Strength[dB]','Max_Tilt[Deg]','Std_Tilt[Deg]','SP_Std[cm/s]','Tilt_Y[Deg]','Tilt_X[Deg]','threshold'];
 sensors["dcs"] = dcs_fields
 
-var flntu_fields = ['d_stamp','t_stamp','chlorophyll_concentration','turbidity_units','treshold']
+var flntu_fields = ['d_stamp','t_stamp','chlorophyll_concentration','turbidity_units','threshold']
 sensors["flntu"] = flntu_fields
 
-var microcat_fields = ['d_stamp','t_stamp','Salinity','Conductivity','Temperature','treshold']
+var microcat_fields = ['d_stamp','t_stamp','Salinity','Conductivity','Temperature','threshold']
 sensors["microcat"] = microcat_fields
 
-var s9_fields = ['d_stamp','t_stamp','s9_id', 'depth', 'temperature','treshold']
+var s9_fields = ['d_stamp','t_stamp','s9_id', 'depth', 'temperature','threshold']
 sensors["s9"] = s9_fields
 
-var metpak_fields = ['d_stamp','t_stamp','temperature','humidity','dewpoint','wind_direction','wind_speed','pressure','treshold']
+var metpak_fields = ['d_stamp','t_stamp','temperature','humidity','dewpoint','wind_direction','wind_speed','pressure','threshold']
 sensors["metpak"] = metpak_fields
 
-var windsonic_fields = ['d_stamp','t_stamp','north','east','magnitude_1','magnitude_2','gustdirection','winddirection','treshold']
+var windsonic_fields = ['d_stamp','t_stamp','north','east','magnitude_1','magnitude_2','gustdirection','winddirection','threshold']
 sensors["windsonic"] = windsonic_fields
 
-var mp101a_humidity_fields = ['d_stamp','t_stamp','external_humidity_AvgVal','AvgVolt','AvgLinearAdjVal','treshold']
+var mp101a_humidity_fields = ['d_stamp','t_stamp','external_humidity_AvgVal','AvgVolt','AvgLinearAdjVal','threshold']
 sensors["mp101a_humidity"] = mp101a_humidity_fields
 
-var mp101a_temprature_fields = ['d_stamp','t_stamp','external_temperature_AvgVal','AvgVolt','AvgLinearAdjVal','treshold']
+var mp101a_temprature_fields = ['d_stamp','t_stamp','external_temperature_AvgVal','AvgVolt','AvgLinearAdjVal','threshold']
 sensors["mp101a_temprature"] = mp101a_temprature_fields
 
-var barometer_fields = ['d_stamp','t_stamp','BAROMETER','treshold']
+var barometer_fields = ['d_stamp','t_stamp','BAROMETER','threshold']
 sensors["barometer"] = barometer_fields
 
-var waves_fields = ['d_stamp','t_stamp','dominant_period','significant_height','mean_period','treshold']
+var waves_fields = ['d_stamp','t_stamp','dominant_period','significant_height','mean_period','threshold']
 sensors["waves"] = waves_fields
 
 
