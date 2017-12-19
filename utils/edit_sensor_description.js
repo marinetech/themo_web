@@ -68,6 +68,12 @@ var waves_model = "Lord MicroStrain	- 3DM-GX25"
 var waves_fields = [waves_display_name,waves_description,waves_model]
 sensors["waves"] = waves_fields
 
+var adcp_display_name = "ADCP"
+var adcp_description = "Acoustic Doppler Current Profiler"
+var adcp_model = "signature 250"
+var adcp_fields = [adcp_display_name,adcp_description,adcp_model]
+sensors["adcp"] = adcp_fields
+
 
 mongoose.Promise = global.Promise; // solution for mongoose Promise warrning
 var strConnection = 'mongodb://127.0.0.1/themo';

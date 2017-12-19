@@ -13,7 +13,7 @@ sensors["mp101a_humidity"] = false
 sensors["mp101a_temprature"] = false
 sensors["barometer"] = false
 sensors["waves"] = false
-sensors["adcp"] = true
+sensors["adcp"] = false
 sensors["spp"] = true
 sensors["pir"] = true
 

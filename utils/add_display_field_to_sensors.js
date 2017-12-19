@@ -33,6 +33,11 @@ sensors["barometer"] = barometer_fields
 var waves_fields = ['d_stamp','t_stamp','dominant_period','significant_height','mean_period','threshold','const_err']
 sensors["waves"] = waves_fields
 
+var adcp_fields = ['d_stamp','t_stamp','depth[m]','direction[deg]','speed[m/s]']
+sensors["adcp"] = adcp_fields
+
+
+
 
 mongoose.Promise = global.Promise; // solution for mongoose Promise warrning
 var strConnection = 'mongodb://127.0.0.1/themo';
