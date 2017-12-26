@@ -33,7 +33,7 @@ sensors["barometer"] = barometer_fields
 var waves_fields = ['d_stamp','t_stamp','dominant_period','significant_height','mean_period','threshold','const_err']
 sensors["waves"] = waves_fields
 
-var adcp_fields = ['d_stamp','t_stamp','depth[m]','direction[deg]','speed[m/s]']
+var adcp_fields = ['d_stamp','t_stamp','depth[m]','direction[deg]','speed[m/s]','threshold','const_err']
 sensors["adcp"] = adcp_fields
 
 
