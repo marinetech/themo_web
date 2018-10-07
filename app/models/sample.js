@@ -4,7 +4,7 @@ var mongoose = require("mongoose");
 var sampleSchema = mongoose.Schema({
       sensor_name: String,
       sensor_id: String,
-      d_stamp: String      
+      d_stamp: String
   },{ strict: false });
 
 var samples  = mongoose.model('samples', sampleSchema);

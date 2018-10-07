@@ -19,9 +19,11 @@ html
     link(rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css")
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
                   
-    link(rel="stylesheet" href="css/bootstrap.min.css")
+    link(rel="stylesheet" href="/css/bootstrap.min.css")
     link(rel='stylesheet', href='/css/index.css')
     title Welcome to THEMO Web-Site
+    
+    
 
     block css
 
@@ -30,15 +32,23 @@ html
 
   body
       .header
-        a(href='http://www.haifa.ac.il/index.php/en/' target='_blank') <img class="img-fluid" id="logo_left" src="img/univ_haifa.png" alt="Haifa logo" />
+        a(href='http://www.haifa.ac.il/index.php/en/' target='_blank') <img class="img-fluid" id="logo_left" src="/img/univ_haifa.png" alt="Haifa logo" />
         
-        a(href='http://marsci.haifa.ac.il/index.php/en/' target='_blank') <img id="logo_lch" src="img/LHC_logo_FINA.png" alt="LCH logo" />
-        a(href='https://www.tamu.edu/' target='_blank') <img id="logo_right" src="img/am.png" alt="A&M logo"/>
+        a(href='http://marsci.haifa.ac.il/index.php/en/' target='_blank') <img id="logo_lch" src="/img/LHC_logo_FINA.png" alt="LCH logo" />
+        a(href='https://www.tamu.edu/' target='_blank') <img id="logo_right" src="/img/am.png" alt="A&M logo"/>
         h2.page-title Welcome to the THEMO Website
         
         ul.nav
           li: a(href='/' id='/') Home
-          li: a(href='/buoys' id='buoys') Buoys
+          //- li: a(href='/buoys' id='buoys') Buoys
+          <div class="dropdown">
+            //- <button class="dropbtn">Buoys</button>
+            <button class="dropbuoys" id='buoys'>Buoys</button>
+            <div class="dropdown-content-buoys">
+              <a href="/buoys?id=tabs225m09">tabs225m09</a>
+              <a href="/buoys?id=tabs225m11">tabs225m11</a>
+            </div>
+          </div>
           li: a(href='/graph' id='graph') Graph
           li: a(href='/login' id='login') login
 
