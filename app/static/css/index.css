@@ -261,6 +261,16 @@ button:hover {
   margin-bottom: 2px;
 }
 
+.flash_success {
+  color: green;
+  background-color: lime;
+  border-color: green;
+  border-width: 3px;
+  border-style: solid;
+  padding: 10px;
+  margin-bottom: 2px;
+}
+
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
   .cancelbtn, .signupbtn {

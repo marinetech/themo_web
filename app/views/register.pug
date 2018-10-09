@@ -12,6 +12,12 @@ block content
            div.flash_err #{err.msg}
          <br>
          <br>
+         
+       -if(success_msg)
+         each msg in success_msg
+           div.flash_success #{msg}
+           <br>
+           <br>
 
        // register form
        form(method='POST' action='/users/register')

@@ -55,13 +55,12 @@ router.post('/register', function (req, res) {
 					});
 					User.createUser(newUser, function (err, user) {
 						if (err) {
-							console.log("??????");
 							throw err;
 						}
 					});
 					send_verification_mail(email,newUser.activation_code);
-         	req.flash('success_msg', 'Check you mailbox to complete the registration process');
-					res.render('login', {success_msg : req.flash('success_msg')} );
+         	req.flash('success_msg', "The form was submitted successfully.\ncheck you mailbox to complete the registration process");
+					res.render('register', {success_msg : req.flash('success_msg')} );
 				}
 			});
 	}
