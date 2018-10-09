@@ -29,7 +29,7 @@ router.post('/register', function (req, res) {
 	var errors = req.validationErrors();
 
 	if (errors) {
-		console.log(errors)
+		// console.log(errors)
 		res.render('register', {
 			errors: errors
 		});
@@ -40,9 +40,9 @@ router.post('/register', function (req, res) {
 				"$regex": "^" + email + "\\b", "$options": "i"
 		}}, function (err, objUser) {
 				if (objUser) {
-					console.log("email is already in use: " + objUser)
+					errors = [{msg: 'Email is already in use'}]
 					res.render('register', {
-						mail: mail
+						errors: errors
 					});
 				}
 				else {
@@ -54,12 +54,14 @@ router.post('/register', function (req, res) {
 						activation_code: Math.floor(Math.random() * 10000000)
 					});
 					User.createUser(newUser, function (err, user) {
-						if (err) throw err;
-						console.log(user);
+						if (err) {
+							console.log("??????");
+							throw err;
+						}
 					});
 					send_verification_mail(email,newUser.activation_code);
-         	req.flash('success_msg', 'You are registered and can now login', 'test');
-					res.redirect('login');
+         	req.flash('success_msg', 'Check you mailbox to complete the registration process');
+					res.render('login', {success_msg : req.flash('success_msg')} );
 				}
 			});
 	}
@@ -74,16 +76,16 @@ router.get('/login', function (req, res) {
 router.get('/activate/:id', function (req, res) {
 	User.findOne({ activation_code: req.params.id }, function (err, objUser) {
 				if (!objUser) {
-					console.log("-E- Account was already is already activated");
-					res.render('login');
+					req.flash('err_msg', 'Activation error [already activated?]');
+					res.render('login', {err_msg : req.flash('err_msg')});
 				}
 				else {
 					objUser.active = true
 					objUser.activation_code = ''
 					objUser.save()
-					console.log("Activated successfully !!!");
-					req.flash('success_msg', 'Activated successfully !!!', 'test');
-					res.render('login');
+					// console.log("Activated successfully !!!");
+					req.flash('success_msg', 'Your accout was activated successfully & you can now login');
+					res.render('login', {success_msg : req.flash('success_msg')});
 				}
 			});
 }); //end of get('activate')
@@ -93,21 +95,17 @@ passport.use(new LocalStrategy({
 }, function (username, password, done) {
 		User.getUserByUsername(username, function (err, user) {
 			if (err) {
-				console.log("errr!!!!!!!!!!!!!!!");
 				throw err;
 			}
 			if (!user) {
-				console.log("Unknown User !!!!!!!!!!");
 				return done(null, false, { message: 'Unknown User' });
 			}
 
 			User.comparePassword(password, user.password, function (err, isMatch) {
 				if (err) throw err;
 				if (isMatch) {
-					console.log("isMatch !!!!!!!!!!");
 					return done(null, user);
 				} else {
-					console.log("is NOT Match !!!!!!!!!!");
 					return done(null, false, { message: 'Invalid password' });
 				}
 			});
@@ -126,11 +124,18 @@ passport.deserializeUser(function (id, done) {
 
 router.post('/login', passport.authenticate('local', {
 			successRedirect: '/',
-			failureRedirect: '/users/register',
+			failureRedirect: '/users/login',
 			failureFlash: true
-	}), function (req, res) {
-		res.redirect('/');
-	});
+	}));
+
+	// router.post('/login', passport.authenticate('local', {
+	// 			successRedirect: '/',
+	// 			failureRedirect: '/users/login',
+	// 			failureFlash: true
+	// 	}), function (req, res) {
+	// 		req.flash('success_msg')
+	// 		res.redirect('/buoys');
+	// 	});
 
 router.get('/logout', function (req, res) {
 	req.logout();

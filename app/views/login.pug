@@ -6,7 +6,26 @@ block content
    .row
      .col-md-6.col-md-offset-3
        h1.display-4.m-b-2 Login
-
+       
+       -if(success_msg)
+         each msg in success_msg
+           div.flash_success #{msg}
+           <br>
+           <br>
+         
+       -if(err_msg)
+         div.flash_err #{err_msg}
+         <br>
+         <br>
+        
+       -if(error)
+         each err in error
+           div.flash_err #{err}
+           <br>
+           <br>
+       
+        
+         
        // register form
        form(method='POST' action='/users/login')
          div.form-group
@@ -16,3 +35,7 @@ block content
            label(for='password') Password:
            input#pw.form-control(type='password' name='password')         
          button.btn.btn-primary(type='submit') Login
+       <br>
+       .row
+         .col-md-6.col-md-offset-3
+           <a href='/users/register'> Not registered? register now.</a>

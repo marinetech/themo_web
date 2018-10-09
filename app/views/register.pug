@@ -6,6 +6,12 @@ block content
    .row
      .col-md-6.col-md-offset-3
        h1.display-4.m-b-2 Sign Up
+       
+       -if(errors)
+         each err in errors
+           div.flash_err #{err.msg}
+         <br>
+         <br>
 
        // register form
        form(method='POST' action='/users/register')

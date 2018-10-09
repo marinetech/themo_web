@@ -96,7 +96,7 @@ app.use('/users', users);
 
 app.get('/', function (req, res, next) {
   try {
-    res.render('homepage')
+    res.render('homepage', req.flash('success_msg'))
   } catch (e) {
     next(e)
   }
@@ -104,7 +104,7 @@ app.get('/', function (req, res, next) {
 
 app.get('/login', function (req, res, next) {
   try {
-    res.render('login', { title: 'Hey', message: 'Hello there!' })
+    res.render('login', req.flash('success_msg'))
   } catch (e) {
     next(e)
   }
