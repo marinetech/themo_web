@@ -93,6 +93,8 @@ buoys_route = require('./controllers/buoys.js');
 buoys_route.controller(app, urlencodedParser);
 var users = require('./controllers/users');
 app.use('/users', users);
+var status = require('./controllers/status');
+app.use('/status', status);
 
 app.get('/', function (req, res, next) {
   try {
@@ -102,13 +104,13 @@ app.get('/', function (req, res, next) {
   }
 })
 
-app.get('/login', function (req, res, next) {
-  try {
-    res.render('login', req.flash('success_msg'))
-  } catch (e) {
-    next(e)
-  }
-})
+// app.get('/login', function (req, res, next) {
+//   try {
+//     res.render('login', req.flash('success_msg'))
+//   } catch (e) {
+//     next(e)
+//   }
+// })
 
 app.get('/graph', function (req, res, next) {
   try {
