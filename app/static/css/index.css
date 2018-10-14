@@ -16,6 +16,7 @@ body {
   position: fixed /* Set the navbar to fixed position */;
   top: 0 /* Position the navbar at the top of the page */;
   width: 100% /* Full width */;
+  z-index: 300;
 }
 .header .page-title {
   font-weight: 600;
@@ -270,6 +271,27 @@ button:hover {
   padding: 10px;
   margin-bottom: 2px;
 }
+
+.report_div {
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 7px solid black;
+  color: black;
+  padding: 10px;
+  margin-bottom: 25px;
+}
+
+.report_subtitle {
+  color: blue;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.report_data {
+  padding: 5px;
+}
+
 
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
