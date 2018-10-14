@@ -4,12 +4,88 @@ block content
   
   .main.container
    .row
-     .col-md-6.col-md-offset-3
-       h1.display-4.m-b-2 Themo Health Status
+     .col-md-6.col-md-offset-3 
+       h3.display-4.m-b-2 Themo Health Status <br><br><br>
        
-      
-       //-  h2 #{report.barometer.pressure}
-      
+       .report_div
+         .report_subtitle Last communication time:
+         .report_data #{report.lastcomm}
+         
+       .report_div
+         .report_subtitle Last AIS report:
+         .report_data #{report.ais}
+     
+       .report_div
+         .report_subtitle Batteries:
+         .report_data Battery1: #{report.battery1.level} [#{report.battery1.date}]
+         .report_data Battery2: #{report.battery2.level} [#{report.battery2.date}]
+         .report_data Battery3: #{report.battery3.level} [#{report.battery3.date}]
+         
+       .report_div
+         .report_subtitle Soundnine Sensors:
+         .report_data Last report: #{report.s9.latest}
+         .report_data Number of sensors: #{report.s9.num_of_sensors}
+         each sens in report.s9.sensors
+           .report_data #{sens.s9_id} depth: #{sens.depth} temperature: #{sens.temp}
+         
+       .report_div 
+         .report_subtitle Barometer:
+         .report_data Last report: #{report.barometer.iso_date} 
+         .report_data Barometric pressure: #{report.barometer.pressure}
+         
+       .report_div 
+         .report_subtitle Microcat:
+         .report_data Last report: #{report.microcat.iso_date} 
+         .report_data Salinity: #{report.microcat.salinity}
+         .report_data Conductivity: #{report.microcat.conductivity}
+         .report_data Temperature: #{report.microcat.temperature}
+         
+       .report_div
+         .report_subtitle Windsonic:
+         .report_data last report: #{report.windsonic.iso_date} 
+         .report_data Wind-direction: #{report.windsonic.winddirection}
+         .report_data wind_speed: #{report.windsonic.magnitude}
+         
+       .report_div
+         .report_subtitle Metpak:
+         .report_data Last report: #{report.metpak.iso_date} 
+         .report_data Wind-direction: #{report.metpak.winddirection}
+         .report_data wind_speed: #{report.metpak.speed}
+         .report_data Temperature: #{report.metpak.temperature}
+         .report_data Humidity: #{report.metpak.humidity}
+         
+       .report_div
+         .report_subtitle Microstrain:
+         .report_data Last report: #{report.waves.iso_date} 
+         .report_data Mean Period: #{report.waves.mean_period}
+         .report_data Dominant Period: #{report.waves.dominant_period}
+         .report_data Significant Height: #{report.waves.significant_height}
+         
+       .report_div
+         .report_subtitle Humidity:
+         .report_data Last report: #{report.humidity.iso_date} 
+         .report_data Humidity: #{report.humidity.humidity}
+         
+       .report_div
+         .report_subtitle External Temperature:
+         .report_data Last report: #{report.temperature.iso_date} 
+         .report_data temperature: #{report.temperature.temperature}         
+         
+       .report_div
+         .report_subtitle ADCP:
+         .report_data Last report: #{report.adcp.iso_date}         
+           
+       .report_div
+         .report_subtitle DCS:
+         .report_data Last report: #{report.dcs.iso_date}          
+             
+       .report_div
+         .report_subtitle flntu:
+         .report_data Last report: #{report.flntu.iso_date} 
+         
+       
+       
+        
        
 
        
