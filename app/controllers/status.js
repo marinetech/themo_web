@@ -263,10 +263,10 @@ function get_last_ais(callback) {
             report.ais = $(this).text().replace(/ +(?= )/g,'').trim().replace("\n", "");
           }
       });
-			callback();
+			// callback();
     } //end of .then()
 
-	).catch(() => {report.ais = '';} ).finally( () => {callback();} )}
+	).catch(() => {report.ais = '';callback();} ).finally( () => {callback();} )}
 
 function extract_ISO_date(doc) {
 	date_str =  doc._doc.d_stamp + 'T' + doc._doc.t_stamp + 'Z';
