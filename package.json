@@ -25,6 +25,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "bower": "^1.8.0",
+    "cheerio": "^1.0.0-rc.2",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "dateformat": "^2.0.0",
@@ -42,6 +43,8 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pug": "^2.0.0-rc.2",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
     "stylus": "^0.54.5",
     "synchronize": "^2.0.0"
   }
