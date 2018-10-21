@@ -14,12 +14,11 @@ var mongotocsv = require('mongo-to-csv');
 
 module.exports.controller = function(app, parser) {
 
-
-  app.get('/buoys', function(req, res) {
-      // mongoose.model('buoys') = buoys_model
-      buoys_model.find(function (err, buoys_data) {
-        //res.send(buoys_data)
-        sensors_model.find( {"hidden": false}, function (err, sensors_data) {
+  app.get('/buoys', parser, function(req, res) {
+      var buoy_id = req.query["id"]
+      buoys_model.find( {"name": buoy_id}, function (err, buoys_data) {
+        // res.send(buoys_data)
+        sensors_model.find( {"buoy_name": buoy_id, "hidden": false}, function (err, sensors_data) {
           res.render('buoys', {b_data: buoys_data, s_data: sensors_data});
         });
       });
@@ -66,7 +65,7 @@ module.exports.controller = function(app, parser) {
           };
           mongotocsv.export(options, function (err, success) {
               console.log("error: " + err);
-              console.log(success);
+              console.log("success:" + success);
               sensor_callback()
           });
         }, function(err) {
@@ -85,9 +84,6 @@ module.exports.controller = function(app, parser) {
 
   }); // end of app.post
 } //end of controller
-
-
-
 
 
 zipit = function (csv_dir, zip_name) {

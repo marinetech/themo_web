@@ -28,3 +28,11 @@ var sensorSchema = mongoose.Schema({
 
 var sensors  = mongoose.model('sensors', sensorSchema);
 module.exports = sensors;
+
+module.exports.getSensorById = function(id, callback) {
+	sensors.findById(id, callback);
+}
+
+module.exports.getSensorslist = function(buoy_name, callback) {
+  sensors.find({'buoy_name' : buoy_name}, callback);
+}

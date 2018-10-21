@@ -1,0 +1,66 @@
+extend default
+
+block content
+  
+  .main.container
+   .row
+     .col-md-6.col-md-offset-3       
+       
+       p.
+         Welcome #{firstname},
+         <br>
+         This page allows you to set tresholds for each of the themo sensors. You'll get a notification mail once the treshold will be exceeded.
+       <hr>
+       
+           
+       form(method='POST' action='/alert/addnewalert')
+         div.form-group
+            <label for='buoy'>Buoy</label>
+            <select class="form-control" name="buoy"  id='buoy' onchange="buoy_selection_was_changed()">
+              <option value="" disabled selected></option>
+              <option value='tabs225m09'>tabs225m09</option>            
+            </select>
+         
+         div.form-group
+            <label for='sensor'>Sensor</label>
+            <select class="form-control" name="sensor"  id='sensor' disabled onchange="sensor_selection_was_changed()">
+              <option value="" disabled selected></option>                  
+            </select>
+            
+         div.form-group      
+          <label for='field'>Data Field</label>
+          <select class="form-control" id="field" name="field" disabled onchange="data_field_was_changed()">
+            <option value="" disabled selected></option>      
+          </select>
+          
+         div.form-group
+          <label for='trigger'>Trigger</label>
+          <select class="form-control"  id="trigger" name="trigger"  disabled onchange="trigger_was_changed()">
+            <option value="" disabled selected></option>
+            <option value="1"> $value > threshold1</option>
+            <option value="2"> $value < threshold1</option>s
+            <option value="3"> $value between Threshold1 & Threshold2</option>
+            <option value="4"> $value not between Threshold1 & Threshold2</option>
+          </select>
+          
+          <br>
+          div.form-group
+            <label for='threshold1'>Treshold1</label>
+            input(class="form-control"  id="threshold1" name="threshold1"  disabled oninput="threshold_was_changed()") 
+          
+          div.form-group
+            <label for='threshold2'>Treshold2</label>
+            input(class="form-control"  id="threshold2" name="threshold2"  disabled oninput="threshold_was_changed()") 
+          
+
+          button(id="btn_submit" type="submit" disabled class="btn btn-primary") Add New Alert
+          
+         -if(errors)
+            each err in errors
+              div.flash_err #{err.msg}            
+          
+        
+         
+          
+  block scripts
+    script(src='scripts/alerts.js')

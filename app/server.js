@@ -95,6 +95,9 @@ var users = require('./controllers/users');
 app.use('/users', users);
 var status = require('./controllers/status');
 app.use('/status', status);
+var status = require('./controllers/alerts');
+app.use('/alert', status);
+
 
 app.get('/', function (req, res, next) {
   try {
